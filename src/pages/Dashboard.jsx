@@ -3,6 +3,8 @@ import { auth, db } from "../firebase";
 import { signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import Chatbot from "../components/Chatbot"; // Import Chatbot component
+
 
 const Dashboard = () => {
     const [user, setUser] = useState(null);
@@ -104,6 +106,12 @@ const Dashboard = () => {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
+            <h1 className="text-2xl">Welcome to Your AI Yoga Dashboard</h1>
+             {/* Chatbot Section */}
+             <div className="mt-6 w-full max-w-lg">
+                <Chatbot />
+            </div>
+
             {user ? (
                 <>
                     <h1 className="text-2xl">Welcome, {user.name}</h1>
