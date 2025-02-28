@@ -11,6 +11,7 @@ const Dashboard = () => {
     const [dietPlan, setDietPlan] = useState("");
     const [loadingDiet, setLoadingDiet] = useState(false);
     const navigate = useNavigate();
+    const BACKEND_URL = "https://ai-yoga-backend.onrender.com"
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -44,7 +45,7 @@ const Dashboard = () => {
         setLoading(true);
     
         try {
-            const response = await fetch("http://127.0.0.1:8000/generate_yoga_routine/", {
+            const response = await fetch(`${BACKEND_URL}/generate-yoga-routine`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -73,7 +74,7 @@ const Dashboard = () => {
         setLoadingDiet(true);
     
         try {
-            const response = await fetch("http://127.0.0.1:8000/generate_diet_plan/", {
+            const response = await fetch(`${BACKEND_URL}/generate-diet-plan`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
