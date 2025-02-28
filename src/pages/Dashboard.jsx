@@ -45,7 +45,7 @@ const Dashboard = () => {
         setLoading(true);
     
         try {
-            const response = await fetch(`${BACKEND_URL}/generate-yoga-routine`, {
+            const response = await fetch(`${BACKEND_URL}/generate-yoga-routine/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -74,7 +74,7 @@ const Dashboard = () => {
         setLoadingDiet(true);
     
         try {
-            const response = await fetch(`${BACKEND_URL}/generate-diet-plan`, {
+            const response = await fetch(`${BACKEND_URL}/generate-diet-plan/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
