@@ -125,14 +125,41 @@ const Dashboard = () => {
     window.location.href = mailtoUrl;
   };
 
-  const downloadPDF = (title, content) => {
-    const doc = new jsPDF();
+ 
+
+const downloadPDF = (title, content) => {
+    const doc = new jsPDF({
+        orientation: "p", // Portrait mode
+        unit: "mm",
+        format: "a4", // Standard A4 size
+    });
+
+    const marginLeft = 10;
+    const marginTop = 10;
+    const maxWidth = 180; // Prevents text from exceeding page width
+    const lineHeight = 7; // Spacing between lines
+    const maxHeight = 270; // Prevents text from exceeding page height
+
     doc.setFont("helvetica", "bold");
-    doc.text(title, 10, 10);
+    doc.text(title, marginLeft, marginTop);
+
     doc.setFont("helvetica", "normal");
-    doc.text(content, 10, 20, { maxWidth: 180 }); // Ensures text wraps within the page
+    
+    const textLines = doc.splitTextToSize(content, maxWidth);
+    let y = marginTop + 10;
+
+    textLines.forEach((line, index) => {
+        if (y + lineHeight > maxHeight) {
+            doc.addPage(); // Add new page when content exceeds page height
+            y = marginTop;
+        }
+        doc.text(line, marginLeft, y);
+        y += lineHeight;
+    });
+
     doc.save(`${title.replace(/\s+/g, "_")}.pdf`);
-  };
+};
+
   const handleLogout = async () => {
     await signOut(auth);
     navigate("/login");
