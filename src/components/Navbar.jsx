@@ -8,18 +8,12 @@ const Navbar = () => {
     return (
         <nav className="bg-white shadow-md p-4">
             <div className="container mx-auto flex justify-between items-center">
-                {/* Left Side: Login Button */}
+
+                {/* Left side: Logo */}
                 <div>
-                    {user ? (
-                        <Link to="/dashboard" className="text-blue-600 font-semibold hover:underline">
-                            Dashboard
-                        </Link>
-                    ) : (
-                        <Link to="/login" className="text-blue-600 font-semibold hover:underline">
-                            Login
-                        </Link>
-                    )}
+                    <img src="/logo.png" alt="Yoga Logo" className="h-10" />
                 </div>
+               
 
                 {/* Center: Navigation Links */}
                 <ul className="hidden md:flex space-x-6">
@@ -31,9 +25,18 @@ const Navbar = () => {
                     <li><Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link></li>
                 </ul>
 
-                {/* Right Side: Logo */}
+                
+                {/* Right Side: Login Button */}
                 <div>
-                    <img src="/logo.png" alt="Yoga Logo" className="h-10" />
+                    {user ? (
+                        <Link to="/dashboard" className="text-blue-600 font-semibold hover:underline">
+                            Dashboard
+                        </Link>
+                    ) : (
+                        <Link to="/login" className="text-blue-600 font-semibold hover:underline">
+                            Login
+                        </Link>
+                    )}
                 </div>
             </div>
         </nav>
