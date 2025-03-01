@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -18,7 +23,11 @@ export const db = getFirestore(app);
 
 // Email/Password Sign-Up Function
 export const registerWithEmail = async (email, password, name) => {
-  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  const userCredential = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password,
+  );
   const user = userCredential.user;
 
   // Save user to Firestore
@@ -31,7 +40,7 @@ export const registerWithEmail = async (email, password, name) => {
     createdAt: new Date(),
     fitnessLevel: "",
     yogaGoal: "",
-    dietPreference: ""
+    dietPreference: "",
   });
 
   return user;
