@@ -173,7 +173,7 @@ const Dashboard = () => {
               <h2 className="text-lg font-bold">
                 Your Personalized Yoga Routine:
               </h2>
-              <p className="mt-2 whitespace-pre-wrap">{yogaRoutine}</p>
+              <pre className="mt-2 whitespace-pre-wrap">{yogaRoutine}</pre>
 
               {/* Share & Download Buttons */}
               <div className="mt-4 flex gap-2">
@@ -199,20 +199,12 @@ const Dashboard = () => {
             </div>
           )}
 
-          <button
-            onClick={fetchDietPlan}
-            className="mt-4 bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600"
-            disabled={loadingDiet}
-          >
-            {loadingDiet ? "Generating..." : "Generate Diet Plan"}
-          </button>
-
           {dietPlan && (
             <div className="mt-4 p-4 bg-gray-100 rounded-lg w-full">
               <h2 className="text-lg font-bold">
                 Your AI-Generated Meal Plan:
               </h2>
-              <p className="mt-2 whitespace-pre-wrap">{dietPlan}</p>
+              <pre className="mt-2 whitespace-pre-wrap">{dietPlan}</pre>
 
               {/* Share & Download Buttons */}
               <div className="mt-4 flex gap-2">
@@ -238,6 +230,44 @@ const Dashboard = () => {
             </div>
           )}
 
+          <button
+            onClick={fetchDietPlan}
+            className="mt-4 bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600"
+            disabled={loadingDiet}
+          >
+            {loadingDiet ? "Generating..." : "Generate Diet Plan"}
+          </button>
+
+          {dietPlan && (
+            <div className="mt-4 p-4 bg-gray-100 rounded-lg w-full">
+              <h2 className="text-lg font-bold">
+                Your AI-Generated Meal Plan:
+              </h2>
+              <pre className="mt-2 whitespace-pre-wrap">{dietPlan}</pre>
+
+              {/* Share & Download Buttons */}
+              <div className="mt-4 flex gap-2">
+                <button
+                  onClick={() => shareWhatsApp(dietPlan)}
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                >
+                  📲 Share via WhatsApp
+                </button>
+                <button
+                  onClick={() => shareEmail(dietPlan)}
+                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                  ✉️ Share via Email
+                </button>
+                <button
+                  onClick={() => downloadPDF("Meal Plan", dietPlan)}
+                  className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800"
+                >
+                  📄 Download as PDF
+                </button>
+              </div>
+            </div>
+          )}
           <button
             onClick={handleLogout}
             className="mt-4 bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600"
