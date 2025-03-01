@@ -78,7 +78,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="text-5xl mb-10">Welcome to Third Limb Yoga by Shripal</h1>
+      <h1 className="md:text-5xl text-xl mb-10">Welcome to Third Limb Yoga by Shripal</h1>
       <div className="bg-white p-6 shadow-lg rounded-lg w-96">
         <h2 className="text-xl font-bold mb-4">
           {isRegistering ? "Register" : "Login"}

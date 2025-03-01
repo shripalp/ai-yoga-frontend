@@ -22,17 +22,18 @@ const Navbar = () => {
                 
                 {/*Left Side: Logo */}
                 <div>
-                    <img src="/logo.png" alt="Third Limb Yoga Logo" className="h-22" />
+                    <Link to="/"><img src="/logo.png" alt="Third Limb Yoga Logo" className="h-22" /></Link>
+                    
                 </div>
 
                 {/* Center: Desktop Navigation Links */}
                 <ul className="hidden md:flex space-x-6">
-                    <li><Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link></li>
-                    <li><Link to="/about" className="text-gray-700 hover:text-blue-600">About Us</Link></li>
-                    <li><Link to="/classes" className="text-gray-700 hover:text-blue-600">Classes</Link></li>
-                    <li><Link to="/schedule" className="text-gray-700 hover:text-blue-600">Schedule</Link></li>
-                    <li><Link to="/pricing" className="text-gray-700 hover:text-blue-600">Pricing</Link></li>
-                    <li><Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link></li>
+                    <li><Link to="/" className="text-gray-700 hover:text-blue-600 text-xl">Home</Link></li>
+                    <li><Link to="/about" className="text-gray-700 hover:text-blue-600 text-xl">About Us</Link></li>
+                    <li><Link to="/classes" className="text-gray-700 hover:text-blue-600 text-xl">Classes</Link></li>
+                    <li><Link to="/schedule" className="text-gray-700 hover:text-blue-600 text-xl">Schedule</Link></li>
+                    <li><Link to="/pricing" className="text-gray-700 hover:text-blue-600 text-xl">Pricing</Link></li>
+                    <li><Link to="/contact" className="text-gray-700 hover:text-blue-600 text-xl">Contact</Link></li>
                 </ul>
 
                 {/* Mobile Menu Button */}
@@ -44,7 +45,7 @@ const Navbar = () => {
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="left">
-                            <div className="flex flex-col mx-auto mt-8">
+                            <div className="flex flex-col mx-auto my-auto justify-evenly h-full">   
                                 <Link to="/" className="text-lg text-gray-700 hover:text-blue-600" onClick={handleMenuClose}>Home</Link>
                                 <Link to="/about" className="text-lg text-gray-700 hover:text-blue-600" onClick={handleMenuClose}>About Us</Link>
                                 <Link to="/classes" className="text-lg text-gray-700 hover:text-blue-600" onClick={handleMenuClose}>Classes</Link>
@@ -66,7 +67,7 @@ const Navbar = () => {
                         </Link>
                     ) : (
                         <Link to="/login">
-                            <Button variant="ghost" className="text-blue-600 font-semibold">
+                            <Button variant="ghost" className="text-blue-600 font-semibold text-2xl">
                                 Login
                             </Button>
                         </Link>
