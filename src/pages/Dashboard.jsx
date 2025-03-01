@@ -148,7 +148,7 @@ const downloadPDF = (title, content) => {
     const textLines = doc.splitTextToSize(content, maxWidth);
     let y = marginTop + 10;
 
-    textLines.forEach((line, index) => {
+    textLines.forEach((line) => {
         if (y + lineHeight > maxHeight) {
             doc.addPage(); // Add new page when content exceeds page height
             y = marginTop;

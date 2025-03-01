@@ -1,19 +1,35 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Classes from "./pages/Classes";
+import Schedule from "./pages/Schedule";
+import Pricing from "./pages/Pricing";
+import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
-import Preferences from "./pages/Preferences";
+import Login from "./pages/Login";
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/preferences" element={<Preferences />} />
-        <Route path="*" element={<Login />} />
-      </Routes>
-    </Router>
-  );
-}
+const App = () => {
+    const [user] = useAuthState(auth);
+
+    return (
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/classes" element={<Classes />} />
+                <Route path="/schedule" element={<Schedule />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                {user && <Route path="/dashboard" element={<Dashboard />} />}
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
+
