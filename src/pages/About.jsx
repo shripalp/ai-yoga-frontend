@@ -43,9 +43,9 @@ const About = () => {
 
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                         {/* Instructor 1 */}
-                        <Card className="shadow-lg">
+                        <Card className="shadow-lg invisible">
                             <CardContent className="p-6">
-                                <img src="/instructor1.jpg" alt="Instructor" className="w-32 h-32 mx-auto rounded-full" />
+                                <img src="/instructor1.jpg" alt="Instructor" className="w-48 h-48 mx-auto rounded-full" />
                                 <h3 className="text-xl font-semibold mt-4">Emma Thompson</h3>
                                 <p className="text-gray-600">Expert in Vinyasa & Mindfulness</p>
                             </CardContent>
@@ -54,16 +54,16 @@ const About = () => {
                         {/* Instructor 2 */}
                         <Card className="shadow-lg">
                             <CardContent className="p-6">
-                                <img src="/instructor2.jpg" alt="Instructor" className="w-32 h-32 mx-auto rounded-full" />
-                                <h3 className="text-xl font-semibold mt-4">Raj Patel</h3>
-                                <p className="text-gray-600">Hatha Yoga Specialist</p>
+                                <img src="/instructor2.jpg" alt="Instructor" className="w-48 h-48 mx-auto rounded-full" />
+                                <h3 className="text-xl font-semibold mt-4">Shripal Parikh, e-RYT 200h</h3>
+                                <p className="text-gray-600">Yoga Instructor</p>
                             </CardContent>
                         </Card>
 
                         {/* Instructor 3 */}
-                        <Card className="shadow-lg">
+                        <Card className="shadow-lg invisible">
                             <CardContent className="p-6">
-                                <img src="/instructor3.jpg" alt="Instructor" className="w-32 h-32 mx-auto rounded-full" />
+                                <img src="/instructor3.jpg" alt="Instructor" className="w-48 h-48 mx-auto rounded-full" />
                                 <h3 className="text-xl font-semibold mt-4">Sophia Lee</h3>
                                 <p className="text-gray-600">Restorative & Healing Yoga</p>
                             </CardContent>
