@@ -25,15 +25,16 @@ const Footer = () => {
 
                 {/* Right: Social Media Links */}
                 <div className="flex space-x-4 mt-4 md:mt-0">
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                        <Facebook className="h-6 w-6 hover:text-blue-400" />
-                    </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                        <Instagram className="h-6 w-6 hover:text-pink-400" />
-                    </a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                        <Twitter className="h-6 w-6 hover:text-blue-400" />
-                    </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+    <Facebook className="h-6 w-6 hover:text-blue-400 transition duration-300" />
+</a>
+<a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+    <Instagram className="h-6 w-6 hover:text-pink-400 transition duration-300" />
+</a>
+<a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+    <Twitter className="h-6 w-6 hover:text-blue-400 transition duration-300" />
+</a>
+
                 </div>
             </div>
 

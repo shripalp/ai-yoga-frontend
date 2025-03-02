@@ -12,9 +12,14 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!formData.name || !formData.email || !formData.message) {
+            alert("Please fill in all fields.");
+            return;
+        }
         alert("Message sent! We will get back to you soon.");
         setFormData({ name: "", email: "", message: "" });
     };
+    
 
     return (
         <div className="bg-gray-50 min-h-screen">

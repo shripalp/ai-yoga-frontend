@@ -28,13 +28,14 @@ const Navbar = () => {
 
                 {/* Center: Desktop Navigation Links */}
                 <ul className="hidden md:flex space-x-6">
-                    <li><Link to="/" className="text-gray-700 hover:text-blue-600 text-xl">Home</Link></li>
-                    <li><Link to="/about" className="text-gray-700 hover:text-blue-600 text-xl">About Us</Link></li>
-                    <li><Link to="/classes" className="text-gray-700 hover:text-blue-600 text-xl">Classes</Link></li>
-                    <li><Link to="/schedule" className="text-gray-700 hover:text-blue-600 text-xl">Schedule</Link></li>
-                    <li><Link to="/pricing" className="text-gray-700 hover:text-blue-600 text-xl">Pricing</Link></li>
-                    <li><Link to="/contact" className="text-gray-700 hover:text-blue-600 text-xl">Contact</Link></li>
-                </ul>
+    <li><Link to="/" className="text-gray-700 hover:text-blue-600 transition duration-300">Home</Link></li>
+    <li><Link to="/about" className="text-gray-700 hover:text-blue-600 transition duration-300">About Us</Link></li>
+    <li><Link to="/classes" className="text-gray-700 hover:text-blue-600 transition duration-300">Classes</Link></li>
+    <li><Link to="/schedule" className="text-gray-700 hover:text-blue-600 transition duration-300">Schedule</Link></li>
+    <li><Link to="/pricing" className="text-gray-700 hover:text-blue-600 transition duration-300">Pricing</Link></li>
+    <li><Link to="/contact" className="text-gray-700 hover:text-blue-600 transition duration-300">Contact</Link></li>
+</ul>
+
 
                 {/* Mobile Menu Button */}
                 <div className="md:hidden">

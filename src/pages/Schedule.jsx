@@ -44,12 +44,14 @@ const Schedule = () => {
                 <div className="mt-6 flex flex-wrap justify-center gap-4">
                     {classTypes.map((type) => (
                         <Button
-                            key={type}
-                            variant={selectedClass === type ? "default" : "outline"}
-                            onClick={() => setSelectedClass(type)}
-                        >
-                            {type}
-                        </Button>
+                        key={type}
+                        variant={selectedClass === type ? "default" : "outline"}
+                        onClick={() => setSelectedClass(type)}
+                        className="transition duration-300 hover:bg-blue-500 hover:text-white"
+                    >
+                        {type}
+                    </Button>
+                    
                     ))}
                 </div>
             </div>
