@@ -22,7 +22,7 @@ const Navbar = () => {
                 
                 {/*Left Side: Logo */}
                 <div>
-                    <Link to="/"><img src="/logo.png" alt="Third Limb Yoga Logo" className="h-22" /></Link>
+                    <Link to="/"><img src="/logo.png" alt="Third Limb Yoga Logo" className="h-26" /></Link>
                     
                 </div>
 
@@ -61,7 +61,7 @@ const Navbar = () => {
                  <div>
                     {user ? (
                         <Link to="/dashboard">
-                            <Button variant="ghost" className="text-blue-600 font-semibold">
+                            <Button variant="ghost" className="text-blue-600 font-semibold text-2xl">
                                 Dashboard
                             </Button>
                         </Link>
