@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const classSchedule = [
     { day: "Monday", time: "8:00 AM", classType: "Vinyasa Flow", instructor: "Emma Thompson" },
@@ -79,9 +80,11 @@ const Schedule = () => {
             <div className="bg-blue-600 text-white text-center py-12">
                 <h2 className="text-3xl font-bold">Book Your Yoga Class Today</h2>
                 <p className="mt-2 text-lg">Join a class that fits your schedule and experience the benefits of yoga.</p>
-                <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
-                    View Pricing
-                </Button>
+                <Link to="/login">
+                    <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
+                        Get Started
+                    </Button>
+                </Link>
             </div>
         </div>
     );

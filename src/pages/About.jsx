@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+
 
 const About = () => {
     return (
@@ -76,9 +78,11 @@ const About = () => {
             <div className="bg-blue-600 text-white text-center py-12">
                 <h2 className="text-3xl font-bold">Join Our Yoga Community</h2>
                 <p className="mt-2 text-lg">Start your journey to wellness today.</p>
-                <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
-                    Get Started
-                </Button>
+                <Link to="/login">
+                    <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
+                        Get Started
+                    </Button>
+                </Link>
             </div>
         </div>
     );

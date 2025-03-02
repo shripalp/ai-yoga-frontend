@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 const pricingPlans = [
     {
@@ -73,9 +75,11 @@ const Pricing = () => {
             <div className="bg-blue-600 text-white text-center py-12">
                 <h2 className="text-3xl font-bold">Start Your Yoga Journey Today</h2>
                 <p className="mt-2 text-lg">Find balance, flexibility, and strength with our expert instructors.</p>
-                <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
-                    Join Now
-                </Button>
+                <Link to="/login">
+                    <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
+                        Get Started
+                    </Button>
+                </Link>
             </div>
         </div>
     );

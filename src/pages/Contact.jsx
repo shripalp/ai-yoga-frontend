@@ -33,7 +33,7 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="container mx-auto px-6 py-12 text-center">
                 <h2 className="text-3xl font-bold text-gray-800">Our Contact Details</h2>
-                <p className="text-gray-600 mt-4">Reach out to us anytime – we're here to help.</p>
+                <p className="text-gray-600 mt-4">Reach out to us anytime – we are here to help.</p>
 
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Email */}
@@ -41,7 +41,7 @@ const Contact = () => {
                         <CardContent className="p-6 flex flex-col items-center">
                             <Mail className="text-blue-600 w-10 h-10" />
                             <h3 className="text-xl font-semibold mt-4">Email</h3>
-                            <p className="text-gray-600 mt-2">info@thirdlimbyoga.com</p>
+                            <p className="text-gray-600 mt-2">shripalp@gmail.com</p>
                         </CardContent>
                     </Card>
 
@@ -50,7 +50,7 @@ const Contact = () => {
                         <CardContent className="p-6 flex flex-col items-center">
                             <Phone className="text-green-600 w-10 h-10" />
                             <h3 className="text-xl font-semibold mt-4">Phone</h3>
-                            <p className="text-gray-600 mt-2">+1 (123) 456-7890</p>
+                            <p className="text-gray-600 mt-2">+1 (403) 805-4070</p>
                         </CardContent>
                     </Card>
 
@@ -59,7 +59,7 @@ const Contact = () => {
                         <CardContent className="p-6 flex flex-col items-center">
                             <MapPin className="text-red-600 w-10 h-10" />
                             <h3 className="text-xl font-semibold mt-4">Location</h3>
-                            <p className="text-gray-600 mt-2">123 Yoga Street, Calgary, Canada</p>
+                            <p className="text-gray-600 mt-2">284 Everbrook Way SW, Calgary, Canada</p>
                         </CardContent>
                     </Card>
                 </div>

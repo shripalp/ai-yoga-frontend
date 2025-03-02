@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const Classes = () => {
     return (
@@ -91,9 +92,11 @@ const Classes = () => {
             <div className="bg-blue-600 text-white text-center py-12">
                 <h2 className="text-3xl font-bold">Ready to Start?</h2>
                 <p className="mt-2 text-lg">Sign up today and book your first class.</p>
-                <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
-                    Join a Class
-                </Button>
+                <Link to="/login">
+                    <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
+                        Get Started
+                    </Button>
+                </Link>
             </div>
         </div>
     );
