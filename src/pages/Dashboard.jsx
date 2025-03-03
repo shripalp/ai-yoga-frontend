@@ -125,13 +125,11 @@ const Dashboard = () => {
     window.location.href = mailtoUrl;
   };
 
- 
-
-const downloadPDF = (title, content) => {
+  const downloadPDF = (title, content) => {
     const doc = new jsPDF({
-        orientation: "p", // Portrait mode
-        unit: "mm",
-        format: "a4", // Standard A4 size
+      orientation: "p", // Portrait mode
+      unit: "mm",
+      format: "a4", // Standard A4 size
     });
 
     const marginLeft = 10;
@@ -144,30 +142,29 @@ const downloadPDF = (title, content) => {
     doc.text(title, marginLeft, marginTop);
 
     doc.setFont("helvetica", "normal");
-    
+
     const textLines = doc.splitTextToSize(content, maxWidth);
     let y = marginTop + 10;
 
     textLines.forEach((line) => {
-        if (y + lineHeight > maxHeight) {
-            doc.addPage(); // Add new page when content exceeds page height
-            y = marginTop;
-        }
-        doc.text(line, marginLeft, y);
-        y += lineHeight;
+      if (y + lineHeight > maxHeight) {
+        doc.addPage(); // Add new page when content exceeds page height
+        y = marginTop;
+      }
+      doc.text(line, marginLeft, y);
+      y += lineHeight;
     });
 
     doc.save(`${title.replace(/\s+/g, "_")}.pdf`);
-};
+  };
 
-const cleanAIOutput = (text) => {
+  const cleanAIOutput = (text) => {
     return text
-        .replace(/\*/g, "")  // Remove asterisks (*)
-        .replace(/#/g, "")   // Remove hashes (#)
-        .replace(/- /g, "• ") // Replace dashes (-) with bullet points (•)
-        .trim();
-};
-
+      .replace(/\*/g, "") // Remove asterisks (*)
+      .replace(/#/g, "") // Remove hashes (#)
+      .replace(/- /g, "• ") // Replace dashes (-) with bullet points (•)
+      .trim();
+  };
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -205,25 +202,40 @@ const cleanAIOutput = (text) => {
           </button>
 
           {yogaRoutine && (
-    <div className="mt-4 p-4 bg-gray-100 rounded-lg w-full">
-        <h2 className="text-lg font-bold">Your Personalized Yoga Routine:</h2>
-        <pre className="mt-2 whitespace-pre-wrap">{cleanAIOutput(yogaRoutine)}</pre>
+            <div className="mt-4 p-4 bg-gray-100 rounded-lg w-full">
+              <h2 className="text-lg font-bold">
+                Your Personalized Yoga Routine:
+              </h2>
+              <pre className="mt-2 whitespace-pre-wrap">
+                {cleanAIOutput(yogaRoutine)}
+              </pre>
 
-        {/* Share & Download Buttons */}
-        <div className="mt-4 flex gap-2">
-            <button onClick={() => shareWhatsApp(yogaRoutine)} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                📲 Share via WhatsApp
-            </button>
-            <button onClick={() => shareEmail(yogaRoutine)} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                ✉️ Share via Email
-            </button>
-            <button onClick={() => downloadPDF("Yoga Routine", cleanAIOutput(yogaRoutine))} className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800">
-                📄 Download as PDF
-            </button>
-        </div>
-    </div>
-)}
-          
+              {/* Share & Download Buttons */}
+              <div className="mt-4 flex gap-2">
+                <button
+                  onClick={() => shareWhatsApp(yogaRoutine)}
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                >
+                  📲 Share via WhatsApp
+                </button>
+                <button
+                  onClick={() => shareEmail(yogaRoutine)}
+                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                  ✉️ Share via Email
+                </button>
+                <button
+                  onClick={() =>
+                    downloadPDF("Yoga Routine", cleanAIOutput(yogaRoutine))
+                  }
+                  className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800"
+                >
+                  📄 Download as PDF
+                </button>
+              </div>
+            </div>
+          )}
+
           <button
             onClick={fetchDietPlan}
             className="mt-4 bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600"
@@ -233,24 +245,39 @@ const cleanAIOutput = (text) => {
           </button>
 
           {dietPlan && (
-    <div className="mt-4 p-4 bg-gray-100 rounded-lg w-full">
-        <h2 className="text-lg font-bold">Your AI-Generated Meal Plan:</h2>
-        <pre className="mt-2 whitespace-pre-wrap">{cleanAIOutput(dietPlan)}</pre>
+            <div className="mt-4 p-4 bg-gray-100 rounded-lg w-full">
+              <h2 className="text-lg font-bold">
+                Your AI-Generated Meal Plan:
+              </h2>
+              <pre className="mt-2 whitespace-pre-wrap">
+                {cleanAIOutput(dietPlan)}
+              </pre>
 
-        {/* Share & Download Buttons */}
-        <div className="mt-4 flex gap-2">
-            <button onClick={() => shareWhatsApp(dietPlan)} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                📲 Share via WhatsApp
-            </button>
-            <button onClick={() => shareEmail(dietPlan)} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                ✉️ Share via Email
-            </button>
-            <button onClick={() => downloadPDF("Meal Plan", cleanAIOutput(dietPlan))} className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800">
-                📄 Download as PDF
-            </button>
-        </div>
-    </div>
-)}
+              {/* Share & Download Buttons */}
+              <div className="mt-4 flex gap-2">
+                <button
+                  onClick={() => shareWhatsApp(dietPlan)}
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                >
+                  📲 Share via WhatsApp
+                </button>
+                <button
+                  onClick={() => shareEmail(dietPlan)}
+                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                  ✉️ Share via Email
+                </button>
+                <button
+                  onClick={() =>
+                    downloadPDF("Meal Plan", cleanAIOutput(dietPlan))
+                  }
+                  className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800"
+                >
+                  📄 Download as PDF
+                </button>
+              </div>
+            </div>
+          )}
           <button
             onClick={handleLogout}
             className="mt-4 bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600"

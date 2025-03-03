@@ -13,25 +13,24 @@ import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const App = () => {
-    const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
-    return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/classes" element={<Classes />} />
-                <Route path="/schedule" element={<Schedule />} />
-                <Route path="/pricing" element={<Pricing />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/login" element={<Login />} />
-                {user && <Route path="/dashboard" element={<Dashboard />} />}
-            </Routes>
-            <Footer />
-        </Router>
-    );
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/classes" element={<Classes />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        {user && <Route path="/dashboard" element={<Dashboard />} />}
+      </Routes>
+      <Footer />
+    </Router>
+  );
 };
 
 export default App;
-
