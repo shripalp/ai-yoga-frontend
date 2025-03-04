@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Classes from "./pages/Classes";
 import Schedule from "./pages/Schedule";
 import Pricing from "./pages/Pricing";
+import Preferences from "./pages/Preferences";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/preferences" element={<Preferences />} />
         <Route path="/login" element={<Login />} />
         {user && <Route path="/dashboard" element={<Dashboard />} />}
       </Routes>
