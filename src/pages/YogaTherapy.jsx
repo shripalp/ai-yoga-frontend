@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+
 
 const YogaTherapy = () => {
     const [problem, setProblem] = useState("");
@@ -34,7 +37,7 @@ const YogaTherapy = () => {
             console.log("API Response:", data);
 
             if (data.therapyPlan) {
-                setTherapyPlan(data.therapyPlan.content);
+                setTherapyPlan(data.therapyPlan);
             } else {
                 setTherapyPlan("No therapy plan received.");
             }
@@ -74,9 +77,11 @@ const YogaTherapy = () => {
             {therapyPlan && (
                 <div className="mt-8">
                     <h2 className="text-2xl font-bold text-gray-800">Your Personalized Yoga Therapy Plan</h2>
-                    <Card className="mt-4 bg-gray-100 shadow-lg">
+                    <Card className="mt-4 bg-gray-100 shadow-lg text-left">
                         <CardContent className="p-6">
-                            <p className="text-gray-700 whitespace-pre-wrap">{therapyPlan}</p>
+                            <ReactMarkdown rehypePlugins={[rehypeRaw]} className="prose prose-lg max-w-none text-gray-700">
+                                {therapyPlan}
+                            </ReactMarkdown>
                         </CardContent>
                     </Card>
                 </div>
@@ -86,4 +91,5 @@ const YogaTherapy = () => {
 };
 
 export default YogaTherapy;
+
 
