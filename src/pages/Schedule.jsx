@@ -79,7 +79,7 @@ const Schedule = () => {
       {/* Hero Section */}
       <div
         className="relative h-[60vh] flex items-center justify-center text-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/yoga-schedule.jpg')" }}
+        style={{ backgroundImage: "url('/yoga-classes.jpg')" }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10 text-white px-6 md:px-12">

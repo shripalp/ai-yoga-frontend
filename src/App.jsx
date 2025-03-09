@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import YogaTherapy from "./pages/YogaTherapy";
 
 const App = () => {
   const [user] = useAuthState(auth);
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/yoga-therapy" element={<YogaTherapy />} />
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/login" element={<Login />} />
         {user && <Route path="/dashboard" element={<Dashboard />} />}
