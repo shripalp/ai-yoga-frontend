@@ -20,7 +20,7 @@ const YogaTherapy = () => {
         try {
             console.log("Sending request to API...");
             
-            const response = await fetch(`${BACKEND_URL}/generate_yoga_therapy_plan/`, {
+            const response = await fetch(`${BACKEND_URL}/generate_yoga_therapy_plan`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ problem_statement: problem }),
@@ -37,7 +37,7 @@ const YogaTherapy = () => {
             console.log("API Response:", data);
 
             if (data.therapyPlan) {
-                setTherapyPlan(data.therapyPlan);
+                setTherapyPlan(data.therapyPlan.content);
             } else {
                 setTherapyPlan("No therapy plan received.");
             }
