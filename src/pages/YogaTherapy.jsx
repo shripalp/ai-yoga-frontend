@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-
+import { auth } from "@/firebase";  
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const YogaTherapy = () => {
     const [problem, setProblem] = useState("");
@@ -11,6 +12,8 @@ const YogaTherapy = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const BACKEND_URL = "https://ai-yoga-backend.onrender.com";
+    const [user] = useAuthState(auth);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -66,9 +69,13 @@ const YogaTherapy = () => {
                         required
                     />
                 </div>
-                <Button type="submit" className="w-full bg-blue-600 text-white hover:bg-blue-700" disabled={loading}>
+                { !user ? <p className="text-red-500">Please login to generate a therapy plan.</p> : <Button type="submit" className="w-full bg-blue-600 text-white hover:bg-blue-700" disabled={loading}>
                     {loading ? "Generating..." : "Generate Therapy Plan"}
-                </Button>
+                </Button>}
+                <div className="mt-6"></div>
+                <p className="text-gray-600">Note: This tool is for informational purposes only and is not a substitute for professional medical advice.</p>
+                <p className="text-gray-600">Please consult a healthcare provider before starting any new exercise program.</p>
+               
             </form>
 
             {/* Display Therapy Plan */}
