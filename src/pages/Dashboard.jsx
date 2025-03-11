@@ -47,7 +47,7 @@ const Dashboard = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${BACKEND_URL}/generate_yoga_routine/`, {
+      const response = await fetch(`${BACKEND_URL}/generate_yoga_routine`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const Dashboard = () => {
       }
 
       const data = await response.json();
-      setYogaRoutine(data.routine);
+      setYogaRoutine(data.routine.content);
     } catch (error) {
       console.error("Error fetching yoga routine:", error);
     }
@@ -76,7 +76,7 @@ const Dashboard = () => {
     setLoadingDiet(true);
 
     try {
-      const response = await fetch(`${BACKEND_URL}/generate_diet_plan/`, {
+      const response = await fetch(`${BACKEND_URL}/generate_diet_plan`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +91,7 @@ const Dashboard = () => {
       }
 
       const data = await response.json();
-      setDietPlan(data.dietPlan);
+      setDietPlan(data.dietPlan.content);
     } catch (error) {
       console.error("Error fetching diet plan:", error);
     }
