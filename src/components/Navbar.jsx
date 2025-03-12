@@ -75,7 +75,14 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          <li><Link to="/yoga-therapy" className="text-gray-700 hover:text-blue-600 font-semibold">Yoga Therapy</Link></li>
+          <li>
+            <Link
+              to="/yoga-therapy"
+              className="text-gray-700 hover:text-blue-600 font-semibold"
+            >
+              Yoga Therapy
+            </Link>
+          </li>
         </ul>
 
         {/* Mobile Menu Button */}

@@ -127,7 +127,7 @@ const Login = () => {
         >
           Sign in with Google
         </button>
-        
+
         <p
           className="text-sm text-blue-500 mt-4 cursor-pointer hidden"
           onClick={() => setIsRegistering(!isRegistering)}

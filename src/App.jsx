@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/yoga-therapy" element={<YogaTherapy />}/> 
+        <Route path="/yoga-therapy" element={<YogaTherapy />} />
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/login" element={<Login />} />
         {user && <Route path="/dashboard" element={<Dashboard />} />}

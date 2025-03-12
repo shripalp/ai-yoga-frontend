@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
-
 const classSchedule = [
   {
     day: "Monday",
@@ -73,7 +72,6 @@ const Schedule = () => {
       ? classSchedule
       : classSchedule.filter((c) => c.classType === selectedClass);
 
- 
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
@@ -121,17 +119,20 @@ const Schedule = () => {
                     {c.day} at {c.time}
                   </p>
                   <p className="text-gray-500">Instructor: {c.instructor}</p>
-                   {/* Embed Calendly */}
-                   <div className="flex justify-center mt-6">
-                   <Button
-    className="mt-4 bg-blue-600 text-white hover:bg-blue-700"
-    onClick={() => window.open("https://calendly.com/shripalp/60min", "_blank")}
->
-    Book Now
-</Button>
-
-               
-            </div>
+                  {/* Embed Calendly */}
+                  <div className="flex justify-center mt-6">
+                    <Button
+                      className="mt-4 bg-blue-600 text-white hover:bg-blue-700"
+                      onClick={() =>
+                        window.open(
+                          "https://calendly.com/shripalp/60min",
+                          "_blank",
+                        )
+                      }
+                    >
+                      Book Now
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))
@@ -142,7 +143,6 @@ const Schedule = () => {
           )}
         </div>
       </div>
-     
 
       {/* Call to Action */}
       <div className="bg-blue-600 text-white text-center py-12">
