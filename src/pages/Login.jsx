@@ -123,13 +123,13 @@ const Login = () => {
 
         <button
           onClick={handleGoogleSignIn}
-          className="w-full mt-4 bg-gray-700 text-white p-2 rounded hover:bg-gray-800"
+          className="w-full mt-4 bg-gray-700 text-white p-2 rounded hover:bg-gray-800 hidden"
         >
           Sign in with Google
         </button>
-
+        
         <p
-          className="text-sm text-blue-500 mt-4 cursor-pointer"
+          className="text-sm text-blue-500 mt-4 cursor-pointer hidden"
           onClick={() => setIsRegistering(!isRegistering)}
         >
           {isRegistering
