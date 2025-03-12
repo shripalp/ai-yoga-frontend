@@ -62,7 +62,7 @@ const YogaTherapy = () => {
     };
 
 
-    const handleSubmit = async (e) => {
+    const getYogaTherapy = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError(null);
@@ -100,51 +100,72 @@ const YogaTherapy = () => {
     };
 
     const fetchYogaRoutine = async () => {
-        if (!user) return;
+        if (!user || !preferences) return;
         setLoading(true);
-
+    
         try {
+            console.log("DEBUG: Sending request to /generate_yoga_routine with:", preferences);
+    
             const response = await fetch(`${BACKEND_URL}/generate_yoga_routine`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    fitnessLevel: user.fitnessLevel,
-                    yogaGoal: user.yogaGoal,
+                    fitnessLevel: preferences.fitnessLevel,
+                    yogaGoal: preferences.yogaGoal,
                 }),
             });
-
+    
+            console.log("DEBUG: Response status:", response.status);
+    
             const data = await response.json();
-            setYogaRoutine(data.routine.content || "No yoga routine received.");
+            console.log("DEBUG: API Response:", data);
+    
+            if (data.routine) {
+                setYogaRoutine(data.routine.content);
+            } else {
+                setYogaRoutine("No yoga routine received.");
+            }
         } catch (error) {
             console.error("Error fetching yoga routine:", error);
             setError("Failed to load yoga routine.");
         }
-
+    
         setLoading(false);
     };
-
+    
     const fetchDietPlan = async () => {
-        if (!user) return;
+        if (!user || !preferences) return;
         setLoading(true);
-
+    
         try {
+            console.log("DEBUG: Sending request to /generate_diet_plan with:", preferences);
+    
             const response = await fetch(`${BACKEND_URL}/generate_diet_plan`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    dietType: user.dietPreference,
+                    dietType: preferences.dietPreference,
                 }),
             });
-
+    
+            console.log("DEBUG: Response status:", response.status);
+    
             const data = await response.json();
-            setDietPlan(data.dietPlan.content || "No diet plan received.");
+            console.log("DEBUG: API Response:", data);
+    
+            if (data.dietPlan) {
+                setDietPlan(data.dietPlan.content);
+            } else {
+                setDietPlan("No diet plan received.");
+            }
         } catch (error) {
             console.error("Error fetching diet plan:", error);
             setError("Failed to load diet plan.");
         }
-
+    
         setLoading(false);
     };
+    
 
     return (
         <div className="container mx-auto px-6 py-12 text-center">
@@ -202,7 +223,7 @@ const YogaTherapy = () => {
             )}
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="mt-8 max-w-2xl mx-auto bg-white p-6 shadow-lg rounded-lg">
+            <form onSubmit={getYogaTherapy} className="mt-8 max-w-2xl mx-auto bg-white p-6 shadow-lg rounded-lg">
                 <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">Describe Your Problem</label>
                     <textarea
