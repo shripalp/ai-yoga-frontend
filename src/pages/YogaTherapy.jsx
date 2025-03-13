@@ -181,6 +181,15 @@ const fetchDietPlan = async () => {
 
 
 
+const saveAsTextFile = (content, filename) => {
+  const blob = new Blob([content], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `${filename}.txt`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 
 
@@ -331,6 +340,9 @@ const fetchDietPlan = async () => {
               </ReactMarkdown>
             </CardContent>
           </Card>
+          <Button onClick={() => saveAsTextFile(therapyPlan, "Yoga_Therapy_Plan")} className="mt-4 bg-blue-600 text-white">
+  Save Yoga Therapy Plan as .txt
+</Button>
          
         </div>
       )}
@@ -352,6 +364,9 @@ const fetchDietPlan = async () => {
               
             </CardContent>
           </Card>
+          <Button onClick={() => saveAsTextFile(yogaRoutine, "Yoga_Routine")} className="mt-4 bg-green-600 text-white">
+  Save Yoga Routine as .txt
+</Button>
           
         </div>
       )}
@@ -372,7 +387,9 @@ const fetchDietPlan = async () => {
                 </div>
             </CardContent>
           </Card>
-         
+          <Button onClick={() => saveAsTextFile(dietPlan, "Diet_Plan")} className="mt-4 bg-yellow-500 text-white">
+  Save Diet Plan as .txt
+</Button>
         </div>
       )}
     </div>
