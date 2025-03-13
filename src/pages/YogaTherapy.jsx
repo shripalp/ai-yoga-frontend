@@ -13,9 +13,10 @@ const YogaTherapy = () => {
   const [yogaRoutine, setYogaRoutine] = useState("");
   const [preferences, setPreferences] = useState(null);
   const [editingPreferences, setEditingPreferences] = useState(false);
-
   const [dietPlan, setDietPlan] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loadingRoutine, setLoadingRoutine] = useState(false);
+    const [loadingDiet, setLoadingDiet] = useState(false);
   const [error, setError] = useState(null);
   const BACKEND_URL = "https://ai-yoga-backend.onrender.com";
   const [user] = useAuthState(auth);
@@ -102,7 +103,7 @@ const YogaTherapy = () => {
 
   const fetchYogaRoutine = async () => {
     if (!user || !preferences) return;
-    setLoading(true);
+    setLoadingRoutine(true);
 
     try {
         console.log("DEBUG: Sending request to /generate_yoga_routine with:", preferences);
@@ -133,13 +134,13 @@ const YogaTherapy = () => {
         setError("Failed to load yoga routine.");
     }
 
-    setLoading(false);
+    setLoadingRoutine(false);
 };
 
 
 const fetchDietPlan = async () => {
     if (!user || !preferences) return;
-    setLoading(true);
+    setLoadingDiet(true);
 
     try {
         console.log("DEBUG: Sending request to /generate_diet_plan with:", preferences);
@@ -168,7 +169,7 @@ const fetchDietPlan = async () => {
         setError("Failed to load diet plan.");
     }
 
-    setLoading(false);
+    setLoadingDiet(false);
 };
 
 
@@ -320,12 +321,9 @@ const fetchDietPlan = async () => {
         </div>
       )}
       {/* Yoga Routine */}
-      <Button
-        onClick={fetchYogaRoutine}
-        className="mt-6 bg-green-600 text-white"
-      >
-        Generate Yoga Routine
-      </Button>
+      <Button onClick={fetchYogaRoutine} className="mt-6 bg-green-600 text-white" disabled={loadingRoutine}>
+                {loadingRoutine ? "Generating..." : "Generate Yoga Routine"}
+            </Button>
       {yogaRoutine && (
         <div className="mt-8">
           <Card className="mt-4 bg-gray-100 shadow-lg text-left">
@@ -339,9 +337,9 @@ const fetchDietPlan = async () => {
       )}
 
       {/* Diet Plan */}
-      <Button onClick={fetchDietPlan} className="mt-6 bg-yellow-500 text-white">
-        Generate Diet Plan
-      </Button>
+      <Button onClick={fetchDietPlan} className="mt-6 bg-yellow-500 text-white" disabled={loadingDiet}>
+                {loadingDiet ? "Generating..." : "Generate Diet Plan"}
+            </Button>
       {dietPlan && (
         <div className="mt-8">
           <Card className="mt-4 bg-gray-100 shadow-lg text-left">
