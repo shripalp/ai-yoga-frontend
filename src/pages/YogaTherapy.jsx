@@ -59,7 +59,8 @@ const YogaTherapy = () => {
     }
   };
 
-  const getYogaTherapy = async (e) => {
+  const fetchYogaTherapy = async (e) => {
+    if (!user || !preferences) return;
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -261,9 +262,9 @@ const fetchDietPlan = async () => {
         </Card>
       )}
 
-      {/* Form */}
+      {/* Yoga therapy Form */}
       <form
-        onSubmit={getYogaTherapy}
+        onSubmit={fetchYogaTherapy}
         className="mt-8 max-w-2xl mx-auto bg-white p-6 shadow-lg rounded-lg"
       >
         <div className="mb-4">
@@ -278,11 +279,7 @@ const fetchDietPlan = async () => {
             required
           />
         </div>
-        {!user ? (
-          <p className="text-red-500">
-            Please login to generate a therapy plan.
-          </p>
-        ) : (
+        
           <Button
             type="submit"
             className="w-full bg-blue-600 text-white hover:bg-blue-700"
@@ -290,7 +287,7 @@ const fetchDietPlan = async () => {
           >
             {loading ? "Generating..." : "Generate Therapy Plan"}
           </Button>
-        )}
+        
         <div className="mt-6"></div>
         <p className="text-gray-600">
           Note: This tool is for informational purposes only and is not a
