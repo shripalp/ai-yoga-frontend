@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";  // Supports tables, strikethrough, and task lists
 import rehypeRaw from "rehype-raw";
 import { auth, db } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -329,7 +330,9 @@ const fetchDietPlan = async () => {
           <Card className="mt-4 bg-gray-100 shadow-lg text-left">
             <CardContent className="p-6">
               <h2 className="text-lg font-bold">Your Yoga Routine:</h2>
-              <p>{yogaRoutine}</p>
+              
+              {yogaRoutine}
+             
               
             </CardContent>
           </Card>
@@ -345,7 +348,7 @@ const fetchDietPlan = async () => {
           <Card className="mt-4 bg-gray-100 shadow-lg text-left">
             <CardContent className="p-6">
               <h2 className="text-lg font-bold">Your Diet Plan:</h2>
-              <p>{dietPlan}</p>
+              {dietPlan}
               
             </CardContent>
           </Card>
