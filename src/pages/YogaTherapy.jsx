@@ -3,10 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";  // Supports tables, strikethrough, and task lists
-import rehypeRaw from "rehype-raw";
 import { auth, db } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+//import { PDFViewer, Page, Text, Document, StyleSheet } from "@react-pdf/renderer";
+
+
+//import html2pdf from "html2pdf.js/dist/html2pdf.bundle.min.js";
+
+
+
 
 const YogaTherapy = () => {
   const [problem, setProblem] = useState("");
@@ -17,11 +23,13 @@ const YogaTherapy = () => {
   const [dietPlan, setDietPlan] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingRoutine, setLoadingRoutine] = useState(false);
-    const [loadingDiet, setLoadingDiet] = useState(false);
+  const [loadingDiet, setLoadingDiet] = useState(false);
   const [error, setError] = useState(null);
   const BACKEND_URL = "https://ai-yoga-backend.onrender.com";
   const [user] = useAuthState(auth);
 
+  
+  
   useEffect(() => {
     if (user) {
       console.log("DEBUG: User logged in. Fetching preferences...");
@@ -172,6 +180,12 @@ const fetchDietPlan = async () => {
 
 
 
+
+
+
+
+
+
   return (
     <div className="container mx-auto px-6 py-12 text-center">
       <h1 className="text-3xl font-bold text-gray-800">Yoga Therapy Plan</h1>
@@ -310,13 +324,14 @@ const fetchDietPlan = async () => {
           <Card className="mt-4 bg-gray-100 shadow-lg text-left">
             <CardContent className="p-6">
               <ReactMarkdown
-                rehypePlugins={[rehypeRaw]}
+                remarkPlugins={[remarkGfm]}
                 className="prose prose-lg max-w-none text-gray-700"
               >
                 {therapyPlan}
               </ReactMarkdown>
             </CardContent>
           </Card>
+         
         </div>
       )}
       {/* Yoga Routine */}
@@ -337,6 +352,7 @@ const fetchDietPlan = async () => {
               
             </CardContent>
           </Card>
+          
         </div>
       )}
 
@@ -356,6 +372,7 @@ const fetchDietPlan = async () => {
                 </div>
             </CardContent>
           </Card>
+         
         </div>
       )}
     </div>
