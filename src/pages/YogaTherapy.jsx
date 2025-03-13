@@ -118,14 +118,12 @@ const YogaTherapy = () => {
             }),
         });
 
-        console.log("DEBUG: Response status:", response.status);
-
         const data = await response.json();
-        console.log("DEBUG: API Response:", data);
+        console.log("DEBUG: API Response for Yoga Routine:", data);
 
-        if (data && data.routine) {
-            console.log("DEBUG: Extracted Routine Content:", data.routine);
-            setYogaRoutine(data.routine.content); // Ensure data is a string
+        if (data && data.routine && data.routine.content) {
+            console.log("DEBUG: Extracted Routine Content:", data.routine.content);
+            setYogaRoutine(data.routine.content.replace(/\n/g, "  \n")); // Fix line breaks
         } else {
             console.error("ERROR: Unexpected API response format for Yoga Routine:", data);
             setYogaRoutine("Error: Unable to fetch yoga routine.");
@@ -154,13 +152,12 @@ const fetchDietPlan = async () => {
             }),
         });
 
-        console.log("DEBUG: Response status:", response.status);
-
         const data = await response.json();
-        console.log("DEBUG: API Response:", data);
+        console.log("DEBUG: API Response for Diet Plan:", data);
 
-        if (data.dietPlan) {
-            setDietPlan(data.dietPlan.content);
+        if (data && data.dietPlan && data.dietPlan.content) {
+            console.log("DEBUG: Extracted Diet Content:", data.dietPlan.content);
+            setDietPlan(data.dietPlan.content.replace(/\n/g, "  \n")); // Fix line breaks
         } else {
             console.error("ERROR: Unexpected API response format for Diet Plan:", data);
             setDietPlan("Error: Unable to fetch diet plan.");
@@ -172,6 +169,7 @@ const fetchDietPlan = async () => {
 
     setLoadingDiet(false);
 };
+
 
 
   return (
@@ -330,9 +328,12 @@ const fetchDietPlan = async () => {
           <Card className="mt-4 bg-gray-100 shadow-lg text-left">
             <CardContent className="p-6">
               <h2 className="text-lg font-bold">Your Yoga Routine:</h2>
+              <div className="prose prose-lg max-w-none text-gray-700">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {yogaRoutine}
+                    </ReactMarkdown>
+                </div>
               
-              {yogaRoutine}
-             
               
             </CardContent>
           </Card>
@@ -348,8 +349,11 @@ const fetchDietPlan = async () => {
           <Card className="mt-4 bg-gray-100 shadow-lg text-left">
             <CardContent className="p-6">
               <h2 className="text-lg font-bold">Your Diet Plan:</h2>
-              {dietPlan}
-              
+              <div className="prose prose-lg max-w-none text-gray-700">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {dietPlan}
+                    </ReactMarkdown>
+                </div>
             </CardContent>
           </Card>
         </div>
