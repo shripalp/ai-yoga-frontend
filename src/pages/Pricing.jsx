@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const pricingPlans = [
   {
-    name: "Drop-in Class",
-    price: "$15",
-    description: "Perfect for those who want to try a single class.",
+    name: "Drop-in Class - Online",
+    price: "Free",
+    description: "Perfect for those who want to try a single class-Online only.",
     features: [
       "Access to any one class",
       "Valid for one session",
@@ -15,21 +15,19 @@ const pricingPlans = [
     ],
   },
   {
-    name: "Monthly Membership",
-    price: "$59",
-    description: "Unlimited access to all yoga classes for a month.",
-    features: ["Unlimited classes", "Priority booking", "Exclusive workshops"],
+    name: "Monthly Unlimited Pass - Online",
+    price: "$40",
+    description: "Unlimited access to all yoga classes for a month - Online only.",
+    features: ["Unlimited classes", "Valid for one calender month", "Join anytime"],
   },
   {
-    name: "Annual Membership",
-    price: "$499",
-    description: "Best value for dedicated yogis who practice regularly.",
-    features: [
-      "Unlimited classes",
-      "Discount on private sessions",
-      "Special events access",
-    ],
+    name: "Yoga Worskhop In Person - 10 class pass",
+    price: "$150",
+    description: "In person yoga session at student's location.",
+    features: ["Evenings and weekends", "Customized sessions", "Family and friends included in price"],
   },
+  
+  
 ];
 
 const Pricing = () => {
@@ -38,12 +36,12 @@ const Pricing = () => {
       {/* Hero Section */}
       <div
         className="relative h-[60vh] flex items-center justify-center text-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/yoga-classes.jpg')" }}
+        style={{ backgroundImage: "url('/pricing.jpg')" }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10 text-white px-6 md:px-12">
           <h1 className="text-4xl md:text-6xl font-bold">
-            Affordable Yoga Memberships
+            Pricing Plans
           </h1>
           <p className="mt-4 text-lg md:text-xl">
             Choose a plan that fits your lifestyle.
@@ -54,7 +52,7 @@ const Pricing = () => {
       {/* Pricing Section */}
       <div className="container mx-auto px-6 py-12 text-center">
         <h2 className="text-3xl font-bold text-gray-800">
-          Our Membership Plans
+          Our Plans
         </h2>
         <p className="text-gray-600 mt-4">
           Flexible pricing to help you achieve your yoga goals.
@@ -83,10 +81,22 @@ const Pricing = () => {
                     </li>
                   ))}
                 </ul>
+                 {/* Embed Calendly */}
+                 <div className="flex justify-center mt-6">
+                    <Button
+                      className="mt-4 bg-blue-600 text-white hover:bg-blue-700"
+                      onClick={() =>
+                        window.open(
+                          "https://calendly.com/shripalp/60min",
+                          "_blank",
+                        )
+                      }
+                    >
+                      Book Now
+                    </Button>
+                  </div>
 
-                <Button className="mt-6 bg-blue-600 text-white hover:bg-blue-700 w-full">
-                  Choose Plan
-                </Button>
+                
               </CardContent>
             </Card>
           ))}
@@ -99,7 +109,7 @@ const Pricing = () => {
         <p className="mt-2 text-lg">
           Find balance, flexibility, and strength with our expert instructors.
         </p>
-        <Link to="/login">
+        <Link to="/schedule">
           <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
             Get Started
           </Button>

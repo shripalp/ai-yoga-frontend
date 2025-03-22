@@ -3,54 +3,30 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
+
 const classSchedule = [
-  {
-    day: "Monday",
-    time: "8:00 AM",
-    classType: "Vinyasa Flow",
-    instructor: "Emma Thompson",
-  },
+ 
   {
     day: "Monday",
     time: "6:00 PM",
+    duration: "60 min",
     classType: "Hatha Yoga",
-    instructor: "Raj Patel",
-  },
-  {
-    day: "Tuesday",
-    time: "9:00 AM",
-    classType: "Power Yoga",
-    instructor: "Sophia Lee",
-  },
-  {
-    day: "Tuesday",
-    time: "5:30 PM",
-    classType: "Restorative Yoga",
-    instructor: "Emma Thompson",
+    instructor: "Shripal Parikh",
   },
   {
     day: "Wednesday",
-    time: "7:00 AM",
-    classType: "Prenatal Yoga",
-    instructor: "Raj Patel",
-  },
-  {
-    day: "Thursday",
-    time: "10:00 AM",
-    classType: "Meditation & Breathwork",
-    instructor: "Sophia Lee",
-  },
-  {
-    day: "Thursday",
-    time: "7:00 PM",
+    time: "9:00 AM",
+    duration: "60 min",
     classType: "Vinyasa Flow",
-    instructor: "Emma Thompson",
+    instructor: "Shripal Parikh",
   },
+   
   {
     day: "Friday",
     time: "6:00 PM",
-    classType: "Power Yoga",
-    instructor: "Raj Patel",
+    duration: "30 min",
+    classType: "Meditation & Breathwork",
+    instructor: "Shripal Parikh",
   },
 ];
 
@@ -58,9 +34,6 @@ const classTypes = [
   "All",
   "Vinyasa Flow",
   "Hatha Yoga",
-  "Power Yoga",
-  "Restorative Yoga",
-  "Prenatal Yoga",
   "Meditation & Breathwork",
 ];
 
@@ -77,13 +50,13 @@ const Schedule = () => {
       {/* Hero Section */}
       <div
         className="relative h-[60vh] flex items-center justify-center text-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/yoga-classes.jpg')" }}
+        style={{ backgroundImage: "url('/schedule.jpg')" }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10 text-white px-6 md:px-12">
-          <h1 className="text-4xl md:text-6xl font-bold">Class Schedule</h1>
+          <h1 className="text-4xl md:text-6xl font-bold">Our Schedule</h1>
           <p className="mt-4 text-lg md:text-xl">
-            Find a class that fits your schedule and book your spot today.
+            Weekly Schedule of Yoga Classes
           </p>
         </div>
       </div>
@@ -116,7 +89,7 @@ const Schedule = () => {
                     {c.classType}
                   </h3>
                   <p className="text-gray-600 mt-2">
-                    {c.day} at {c.time}
+                    {c.day} at {c.time} for {c.duration}
                   </p>
                   <p className="text-gray-500">Instructor: {c.instructor}</p>
                   {/* Embed Calendly */}
@@ -151,7 +124,7 @@ const Schedule = () => {
           Join a class that fits your schedule and experience the benefits of
           yoga.
         </p>
-        <Link to="/login">
+        <Link to="/schedule">
           <Button className="mt-4 bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200">
             Get Started
           </Button>
