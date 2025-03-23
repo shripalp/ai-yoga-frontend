@@ -75,11 +75,12 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          {/* Show Yoga Therapy only when user is signed in */}
-          {user && (
-                        <li><Link to="/yoga-therapy" className="text-gray-700 hover:text-blue-600 font-semibold">Yoga Therapy</Link></li>
-                    )}
+         
           <li>
+            {/* Show Yoga Therapy only when user is signed in */}
+          {user && (
+                        <Link to="/yoga-therapy" className="text-gray-700 hover:text-blue-600 font-semibold">Yoga Therapy</Link>
+                    )}
             
           </li>
         </ul>
@@ -97,7 +98,7 @@ const Navbar = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
-              <div className="flex flex-col mx-auto my-auto justify-evenly h-full">
+              <div className="flex flex-col mx-auto my-auto justify-center h-full">
                 <Link
                   to="/"
                   className="text-lg text-gray-700 hover:text-blue-600"
@@ -140,6 +141,10 @@ const Navbar = () => {
                 >
                   Contact
                 </Link>
+                 {/* Show Yoga Therapy only when user is signed in */}
+          {user && (
+                        <Link to="/yoga-therapy" className="text-gray-700 hover:text-blue-600 font-semibold">Yoga Therapy</Link>
+                    )}
               </div>
             </SheetContent>
           </Sheet>
