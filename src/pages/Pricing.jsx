@@ -35,7 +35,7 @@ const handleSubscribe = async () => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      price_id: "prod_Rzag7aqjdHGAX9",
+      price_id: "price_1R5bVFJlGz9QeOhkG5acXISi",
     }),
   });
   const data = await res.json();
@@ -73,6 +73,70 @@ const Pricing = () => {
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           
+            <Card
+        
+              className="shadow-lg border border-gray-200 bg-white"
+            >
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold text-blue-600">
+                  {pricingPlans[1].name}
+                </h3>
+                <p className="text-gray-800 text-4xl font-bold mt-2">
+                  {pricingPlans[1].price}
+                </p>
+                <p className="text-gray-600 mt-2">{pricingPlans[1].description}</p>
+
+                <ul className="mt-4 text-left space-y-2">
+                 
+                    <li className="flex items-center">
+                      <CheckCircle className="text-green-500 w-5 h-5 mr-2" />
+                      {pricingPlans[1].features[0]}
+                    </li>
+                  
+                </ul>
+                 {/* Embed Stripe */}
+                 <div className="flex justify-center mt-6">
+                  <Button onClick={handleSubscribe} className="bg-green-600 text-white">
+                    Subscribe Now – Unlimited Yoga Access
+                  </Button>
+
+                  </div>
+
+                
+              </CardContent>
+            </Card>
+            <Card
+        
+              className="shadow-lg border border-gray-200 bg-white"
+            >
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold text-blue-600">
+                  {pricingPlans[1].name}
+                </h3>
+                <p className="text-gray-800 text-4xl font-bold mt-2">
+                  {pricingPlans[1].price}
+                </p>
+                <p className="text-gray-600 mt-2">{pricingPlans[1].description}</p>
+
+                <ul className="mt-4 text-left space-y-2">
+                 
+                    <li className="flex items-center">
+                      <CheckCircle className="text-green-500 w-5 h-5 mr-2" />
+                      {pricingPlans[1].features[0]}
+                    </li>
+                  
+                </ul>
+                 {/* Embed Stripe */}
+                 <div className="flex justify-center mt-6">
+                  <Button onClick={handleSubscribe} className="bg-green-600 text-white">
+                    Subscribe Now – Unlimited Yoga Access
+                  </Button>
+
+                  </div>
+
+                
+              </CardContent>
+            </Card>
             <Card
         
               className="shadow-lg border border-gray-200 bg-white"
