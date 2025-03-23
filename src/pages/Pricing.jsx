@@ -30,6 +30,19 @@ const pricingPlans = [
   
 ];
 
+const handleSubscribe = async () => {
+  const res = await fetch("https://thirdlimbyoga.com/create-checkout-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      price_id: "prod_Rzag7aqjdHGAX9",
+    }),
+  });
+  const data = await res.json();
+  window.location.href = data.url;
+};
+
+
 const Pricing = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -81,19 +94,12 @@ const Pricing = () => {
                     </li>
                   ))}
                 </ul>
-                 {/* Embed Calendly */}
+                 {/* Embed Stripe */}
                  <div className="flex justify-center mt-6">
-                    <Button
-                      className="mt-4 bg-blue-600 text-white hover:bg-blue-700"
-                      onClick={() =>
-                        window.open(
-                          "https://calendly.com/shripalp/60min",
-                          "_blank",
-                        )
-                      }
-                    >
-                      Book Now
-                    </Button>
+                  <Button onClick={handleSubscribe} className="bg-green-600 text-white">
+                    Subscribe Now – Unlimited Yoga Access
+                  </Button>
+
                   </div>
 
                 

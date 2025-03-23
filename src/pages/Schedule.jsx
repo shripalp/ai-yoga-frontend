@@ -92,20 +92,7 @@ const Schedule = () => {
                     {c.day} at {c.time} for {c.duration}
                   </p>
                   <p className="text-gray-500">Instructor: {c.instructor}</p>
-                  {/* Embed Calendly */}
-                  <div className="flex justify-center mt-6">
-                    <Button
-                      className="mt-4 bg-blue-600 text-white hover:bg-blue-700"
-                      onClick={() =>
-                        window.open(
-                          "https://calendly.com/shripalp/60min",
-                          "_blank",
-                        )
-                      }
-                    >
-                      Book Now
-                    </Button>
-                  </div>
+                 
                 </CardContent>
               </Card>
             ))
