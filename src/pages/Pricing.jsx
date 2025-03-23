@@ -72,27 +72,27 @@ const Pricing = () => {
         </p>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {pricingPlans.map((plan, index) => (
+          
             <Card
-              key={index}
+        
               className="shadow-lg border border-gray-200 bg-white"
             >
               <CardContent className="p-6">
                 <h3 className="text-2xl font-semibold text-blue-600">
-                  {plan.name}
+                  {pricingPlans[1].name}
                 </h3>
                 <p className="text-gray-800 text-4xl font-bold mt-2">
-                  {plan.price}
+                  {pricingPlans[1].price}
                 </p>
-                <p className="text-gray-600 mt-2">{plan.description}</p>
+                <p className="text-gray-600 mt-2">{pricingPlans[1].description}</p>
 
                 <ul className="mt-4 text-left space-y-2">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center">
+                 
+                    <li className="flex items-center">
                       <CheckCircle className="text-green-500 w-5 h-5 mr-2" />
-                      {feature}
+                      {pricingPlans[1].features[0]}
                     </li>
-                  ))}
+                  
                 </ul>
                  {/* Embed Stripe */}
                  <div className="flex justify-center mt-6">
@@ -105,7 +105,7 @@ const Pricing = () => {
                 
               </CardContent>
             </Card>
-          ))}
+     
         </div>
       </div>
 
