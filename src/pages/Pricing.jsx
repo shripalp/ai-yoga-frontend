@@ -30,16 +30,16 @@ const pricingPlans = [
   
 ];
 
+const backendURL = import.meta.env.VITE_BACKEND_URL; // set in .env
+
 const handleSubscribe = async () => {
-  const res = await fetch("https://thirdlimbyoga.com/create-checkout-session", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      price_id: "price_1R5bVFJlGz9QeOhkG5acXISi",
-    }),
-  });
-  const data = await res.json();
-  window.location.href = data.url;
+  try {
+    const res = await fetch(`${backendURL}/create-checkout-session?price_id=price_1R5bVFJlGz9QeOhkG5acXISi`);
+    const data = await res.json();
+    window.location.href = data.url;
+  } catch (err) {
+    console.error("Checkout session failed:", err);
+  }
 };
 
 
