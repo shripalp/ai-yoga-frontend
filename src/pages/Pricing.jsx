@@ -31,6 +31,9 @@ const pricingPlans = [
 ];
 
 const backendURL = import.meta.env.VITE_BACKEND_URL; // set in .env
+if (!backendURL) {
+  console.error("VITE_BACKEND_URL is not set! Please define it in your .env or hosting dashboard.");
+}
 
 const handleSubscribe = async () => {
   try {
