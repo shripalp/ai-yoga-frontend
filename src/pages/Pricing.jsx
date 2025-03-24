@@ -13,18 +13,22 @@ const pricingPlans = [
       "Valid for one session",
       "No commitment",
     ],
+    priceId: "price_1R5bacJlGz9QeOhkulIaHwOK",
   },
   {
     name: "Monthly Unlimited Pass - Online",
     price: "$40",
     description: "Unlimited access to all yoga classes for a month - Online only.",
     features: ["Unlimited classes", "Valid for one calender month", "Join anytime"],
+    priceId: "price_1R5bVFJlGz9QeOhkG5acXISi",
   },
   {
     name: "Yoga Worskhop In Person - 10 class pass",
     price: "$150",
     description: "In person yoga session at student's location.",
     features: ["Evenings and weekends", "Customized sessions", "Family and friends included in price"],
+    priceId: "price_1R5bX5JlGz9QeOhk6PlGcbnS",
+    
   },
   
   
@@ -34,16 +38,18 @@ const backendURL = import.meta.env.VITE_BACKEND_URL; // set in .env
 if (!backendURL) {
   console.error("VITE_BACKEND_URL is not set! Please define it in your .env or hosting dashboard.");
 }
+console.log(backendURL);
 
-const handleSubscribe = async () => {
+const handleSubscribe = async (priceId) => {
   try {
-    const res = await fetch(`${backendURL}/create-checkout-session?price_id=price_1R5bVFJlGz9QeOhkG5acXISi`);
+    const res = await fetch(`${backendURL}/create-checkout-session?price_id=${priceId}`);
     const data = await res.json();
     window.location.href = data.url;
   } catch (err) {
     console.error("Checkout session failed:", err);
   }
 };
+
 
 
 const Pricing = () => {
@@ -75,105 +81,34 @@ const Pricing = () => {
         </p>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-            <Card
-        
-              className="shadow-lg border border-gray-200 bg-white"
-            >
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-semibold text-blue-600">
-                  {pricingPlans[1].name}
-                </h3>
-                <p className="text-gray-800 text-4xl font-bold mt-2">
-                  {pricingPlans[1].price}
-                </p>
-                <p className="text-gray-600 mt-2">{pricingPlans[1].description}</p>
+  {pricingPlans.map((plan, index) => (
+    <Card key={index} className="shadow-lg border border-gray-200 bg-white">
+      <CardContent className="p-6">
+        <h3 className="text-2xl font-semibold text-blue-600">{plan.name}</h3>
+        <p className="text-gray-800 text-4xl font-bold mt-2">{plan.price}</p>
+        <p className="text-gray-600 mt-2">{plan.description}</p>
 
-                <ul className="mt-4 text-left space-y-2">
-                 
-                    <li className="flex items-center">
-                      <CheckCircle className="text-green-500 w-5 h-5 mr-2" />
-                      {pricingPlans[1].features[0]}
-                    </li>
-                  
-                </ul>
-                 {/* Embed Stripe */}
-                 <div className="flex justify-center mt-6">
-                  <Button onClick={handleSubscribe} className="bg-green-600 text-white">
-                    Subscribe Now – Unlimited Yoga Access
-                  </Button>
+        <ul className="mt-4 text-left space-y-2">
+          {plan.features.map((feature, i) => (
+            <li key={i} className="flex items-center">
+              <CheckCircle className="text-green-500 w-5 h-5 mr-2" />
+              {feature}
+            </li>
+          ))}
+        </ul>
 
-                  </div>
+        {plan.price !== "Free" && (
+          <div className="flex justify-center mt-6">
+            <Button onClick={()=>handleSubscribe(plan.priceId)} className="bg-green-600 text-white">
+              Subscribe Now – Unlimited Yoga Access
+            </Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  ))}
+</div>
 
-                
-              </CardContent>
-            </Card>
-            <Card
-        
-              className="shadow-lg border border-gray-200 bg-white"
-            >
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-semibold text-blue-600">
-                  {pricingPlans[1].name}
-                </h3>
-                <p className="text-gray-800 text-4xl font-bold mt-2">
-                  {pricingPlans[1].price}
-                </p>
-                <p className="text-gray-600 mt-2">{pricingPlans[1].description}</p>
-
-                <ul className="mt-4 text-left space-y-2">
-                 
-                    <li className="flex items-center">
-                      <CheckCircle className="text-green-500 w-5 h-5 mr-2" />
-                      {pricingPlans[1].features[0]}
-                    </li>
-                  
-                </ul>
-                 {/* Embed Stripe */}
-                 <div className="flex justify-center mt-6">
-                  <Button onClick={handleSubscribe} className="bg-green-600 text-white">
-                    Subscribe Now – Unlimited Yoga Access
-                  </Button>
-
-                  </div>
-
-                
-              </CardContent>
-            </Card>
-            <Card
-        
-              className="shadow-lg border border-gray-200 bg-white"
-            >
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-semibold text-blue-600">
-                  {pricingPlans[1].name}
-                </h3>
-                <p className="text-gray-800 text-4xl font-bold mt-2">
-                  {pricingPlans[1].price}
-                </p>
-                <p className="text-gray-600 mt-2">{pricingPlans[1].description}</p>
-
-                <ul className="mt-4 text-left space-y-2">
-                 
-                    <li className="flex items-center">
-                      <CheckCircle className="text-green-500 w-5 h-5 mr-2" />
-                      {pricingPlans[1].features[0]}
-                    </li>
-                  
-                </ul>
-                 {/* Embed Stripe */}
-                 <div className="flex justify-center mt-6">
-                  <Button onClick={handleSubscribe} className="bg-green-600 text-white">
-                    Subscribe Now – Unlimited Yoga Access
-                  </Button>
-
-                  </div>
-
-                
-              </CardContent>
-            </Card>
-     
-        </div>
       </div>
 
       {/* Call to Action */}
