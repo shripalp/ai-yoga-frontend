@@ -10,6 +10,8 @@ import Preferences from "./pages/Preferences";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import Success from "./pages/Success";
+import Cancel from "./pages/Cancel";
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import YogaTherapy from "./pages/YogaTherapy";
@@ -30,6 +32,8 @@ const App = () => {
         <Route path="/yoga-therapy" element={<YogaTherapy />} />
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
         {user && <Route path="/dashboard" element={<Dashboard />} />}
       </Routes>
       <Footer />
