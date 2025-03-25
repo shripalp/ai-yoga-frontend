@@ -17,6 +17,18 @@ const pricingPlans = [
     priceId: "price_1R5bacJlGz9QeOhkulIaHwOK",
   },
   {
+    name: "In Person Yoga Session - 1 class pass",
+    price: "$40",
+    mode: "payment", // 👈 one-time
+    description: "Perfect for those who want to try a single class in person only",
+    features: [
+      "at student's location",
+      "weekends and evenings",
+      "Friends and Family can join at no extra cost",
+    ],
+    priceId: "price_1R5bYlJlGz9QeOhkfcG3vkS4",
+  },
+  {
     name: "Monthly Unlimited Pass - Online",
     price: "$40",
     mode: "subscription", // 👈 recurring
