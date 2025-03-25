@@ -34,13 +34,16 @@ const pricingPlans = [
   
 ];
 
-const backendURL = import.meta.env.VITE_BACKEND_URL; // set in .env
-if (!backendURL) {
-  console.error("VITE_BACKEND_URL is not set! Please define it in your .env or hosting dashboard.");
-}
-console.log(backendURL);
+
 
 const handleSubscribe = async (priceId) => {
+
+  const backendURL = import.meta.env.VITE_BACKEND_URL; // set in .env
+  console.log(import.meta.env.VITE_BACKEND_URL)
+  if (!backendURL) {
+    console.error("VITE_BACKEND_URL is not set! Please define it in your .env or hosting dashboard.");
+  }
+  console.log(backendURL);
   try {
     const res = await fetch(`${backendURL}/create-checkout-session?price_id=${priceId}`);
     const data = await res.json();
