@@ -7,6 +7,7 @@ const pricingPlans = [
   {
     name: "Drop-in Class - Online",
     price: "Free",
+    mode: "payment", // 👈 one-time
     description: "Perfect for those who want to try a single class-Online only.",
     features: [
       "Access to any one class",
@@ -18,6 +19,7 @@ const pricingPlans = [
   {
     name: "Monthly Unlimited Pass - Online",
     price: "$40",
+    mode: "subscription", // 👈 recurring
     description: "Unlimited access to all yoga classes for a month - Online only.",
     features: ["Unlimited classes", "Valid for one calender month", "Join anytime"],
     priceId: "price_1R5bVFJlGz9QeOhkG5acXISi",
@@ -25,9 +27,10 @@ const pricingPlans = [
   {
     name: "Yoga Worskhop In Person - 10 class pass",
     price: "$150",
+    mode: "payment", // 👈 one-time
     description: "In person yoga session at student's location.",
     features: ["Evenings and weekends", "Customized sessions", "Family and friends included in price"],
-    priceId: "price_1R5bX5JlGz9QeOhk6PlGcbnS",
+    priceId: "price_1R6M7VJlGz9QeOhk0ZeVgAGX",
     
   },
   
@@ -36,16 +39,16 @@ const pricingPlans = [
 
 
 
-const handleSubscribe = async (priceId) => {
+const handleSubscribe = async (priceId, mode) => {
 
   const backendURL = import.meta.env.VITE_BACKEND_URL; // set in .env
-  console.log(import.meta.env.VITE_BACKEND_URL)
+ 
   if (!backendURL) {
     console.error("VITE_BACKEND_URL is not set! Please define it in your .env or hosting dashboard.");
   }
-  console.log(backendURL);
+ 
   try {
-    const res = await fetch(`${backendURL}/create-checkout-session?price_id=${priceId}`);
+    const res = await fetch(`${backendURL}/create-checkout-session?price_id=${priceId}&mode=${mode}`);
     const data = await res.json();
     window.location.href = data.url;
   } catch (err) {
@@ -100,13 +103,13 @@ const Pricing = () => {
           ))}
         </ul>
 
-        {plan.price !== "Free" && (
+      
           <div className="flex justify-center mt-6">
-            <Button onClick={()=>handleSubscribe(plan.priceId)} className="bg-green-600 text-white">
-              Subscribe Now – Unlimited Yoga Access
+            <Button onClick={()=>handleSubscribe(plan.priceId, plan.mode)} className="bg-green-600 text-white">
+              Get
             </Button>
           </div>
-        )}
+        
       </CardContent>
     </Card>
   ))}
