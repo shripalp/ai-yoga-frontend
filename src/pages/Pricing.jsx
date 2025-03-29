@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const pricingPlans = [
   {
@@ -51,26 +52,32 @@ const pricingPlans = [
 
 
 
-const handleSubscribe = async (priceId, mode) => {
-
-  const backendURL = import.meta.env.VITE_BACKEND_URL; // set in .env
- 
-  if (!backendURL) {
-    console.error("VITE_BACKEND_URL is not set! Please define it in your .env or hosting dashboard.");
-  }
- 
-  try {
-    const res = await fetch(`${backendURL}/create-checkout-session?price_id=${priceId}&mode=${mode}`);
-    const data = await res.json();
-    window.location.href = data.url;
-  } catch (err) {
-    console.error("Checkout session failed:", err);
-  }
-};
 
 
 
 const Pricing = () => {
+  const [loadingPriceId, setLoadingPriceId] = useState(null);
+
+  const handleSubscribe = async (priceId, mode) => {
+    const backendURL = import.meta.env.VITE_BACKEND_URL;
+    if (!backendURL) {
+      console.error("VITE_BACKEND_URL is not set!");
+      return;
+    }
+
+    try {
+      setLoadingPriceId(priceId); // start loading this plan
+      const res = await fetch(`${backendURL}/create-checkout-session?price_id=${priceId}&mode=${mode}`);
+      const data = await res.json();
+      window.location.href = data.url;
+    } catch (err) {
+      console.error("Checkout session failed:", err);
+    } finally {
+      setLoadingPriceId(null); // reset after done
+    }
+  };
+
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
@@ -117,8 +124,12 @@ const Pricing = () => {
 
       
           <div className="flex justify-center mt-6">
-            <Button onClick={()=>handleSubscribe(plan.priceId, plan.mode)} className="bg-green-600 text-white">
-              Get
+            <Button
+                    disabled={loadingPriceId === plan.priceId}
+                    onClick={() => handleSubscribe(plan.priceId, plan.mode)}
+                    className="bg-green-600 text-white"
+                  >
+                    {loadingPriceId === plan.priceId ? "Loading..." : "Get"}
             </Button>
           </div>
         
